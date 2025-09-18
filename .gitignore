@@ -31,3 +31,6 @@ wifi_credentials.h
 # Web interface builds
 data/build/
 data/dist/
+
+# Claude Code settings
+.claude/
