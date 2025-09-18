@@ -6,15 +6,18 @@
 #include <time.h>
 #include "esp_sntp.h"
 
+// Include WiFi credentials (copy secrets_template.h to secrets.h and configure)
+#include "secrets.h"
+
 // Hardware pins
 #define IR_SEND_PIN 4
 #define LED_PIN LED_BUILTIN
 
-// WiFi Configuration - Replace with your credentials
-const char* WIFI_SSID = "YOUR_WIFI_SSID";
-const char* WIFI_PASSWORD = "YOUR_WIFI_PASSWORD";
-const char* AP_SSID = "AstroController";
-const char* AP_PASSWORD = "astro2024";
+// WiFi Configuration from secrets.h
+const char* WIFI_SSID_CONFIG = WIFI_SSID;
+const char* WIFI_PASSWORD_CONFIG = WIFI_PASSWORD;
+const char* AP_SSID_CONFIG = AP_SSID;
+const char* AP_PASSWORD_CONFIG = AP_PASSWORD;
 const unsigned long WIFI_TIMEOUT = 10000;
 
 // Global objects
@@ -116,10 +119,10 @@ void setupHardware() {
 }
 
 bool connectToWiFi() {
-    Serial.printf("Connecting to WiFi: %s\n", WIFI_SSID);
-    
+    Serial.printf("Connecting to WiFi: %s\n", WIFI_SSID_CONFIG);
+
     WiFi.mode(WIFI_STA);
-    WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+    WiFi.begin(WIFI_SSID_CONFIG, WIFI_PASSWORD_CONFIG);
     
     unsigned long startTime = millis();
     while (WiFi.status() != WL_CONNECTED && millis() - startTime < WIFI_TIMEOUT) {
@@ -151,14 +154,14 @@ void setupWiFiAP() {
     IPAddress subnet(255, 255, 255, 0);
     WiFi.softAPConfig(local_IP, gateway, subnet);
     
-    bool result = WiFi.softAP(AP_SSID, AP_PASSWORD);
+    bool result = WiFi.softAP(AP_SSID_CONFIG, AP_PASSWORD_CONFIG);
     delay(1000);
-    
+
     if (result) {
-        Serial.printf("Access Point '%s' started successfully\n", AP_SSID);
+        Serial.printf("Access Point '%s' started successfully\n", AP_SSID_CONFIG);
         Serial.print("AP IP Address: ");
         Serial.println(WiFi.softAPIP());
-        Serial.printf("AP Password: %s\n", AP_PASSWORD);
+        Serial.printf("AP Password: %s\n", AP_PASSWORD_CONFIG);
         Serial.println("Connect to AstroController WiFi and go to http://192.168.4.1");
     } else {
         Serial.println("Failed to start Access Point!");

@@ -54,11 +54,41 @@ pio run --target upload
 pio run --target monitor
 ```
 
-## WiFi Setup
+## Setup Instructions
 
-1. Connect to `AstroController` access point (password: `astro2024`)
-2. Navigate to web interface
-3. Configure WiFi credentials for station mode
+### 1. WiFi Configuration
+
+**IMPORTANT**: Copy `src/secrets_template.h` to `src/secrets.h` and configure your WiFi credentials:
+
+```bash
+cp src/secrets_template.h src/secrets.h
+```
+
+Edit `src/secrets.h` with your WiFi details:
+```cpp
+#define WIFI_SSID "YourWiFiName"
+#define WIFI_PASSWORD "YourWiFiPassword"
+```
+
+### 2. First Time Setup
+
+1. If WiFi connection fails, device creates `AstroController` access point
+2. Connect to access point (default password: `astro2024`)
+3. Navigate to `http://192.168.4.1` for web interface
+4. Configure session parameters via web interface
+
+### 3. Network Modes
+
+- **Station Mode**: Connects to your existing WiFi network
+- **Access Point Mode**: Creates hotspot if station connection fails
+- **Web Interface**: Available at device IP address on port 80
+
+## Security Notes
+
+- 🔒 **WiFi credentials** are stored in `secrets.h` (not tracked in git)
+- 🔑 **Access Point password** can be customized in secrets.h
+- 🌐 **Web interface** has no authentication (use on trusted networks)
+- 📡 **IR signals** are sent without encryption (standard for IR remotes)
 
 ## License
 
@@ -66,4 +96,4 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 ## Author
 
-Sven Strohkark
+S540d
