@@ -1,0 +1,33 @@
+# PlatformIO
+.pio/
+.vscode/
+.DS_Store
+
+# Build artifacts
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# OS
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Credentials and secrets
+credentials.h
+secrets.h
+config_local.h
+wifi_credentials.h
+
+# Web interface builds
+data/build/
+data/dist/
