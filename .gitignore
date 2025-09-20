@@ -1,36 +1,31 @@
-# PlatformIO
+# ===========================================
+# PlatformIO Project .gitignore
+# ===========================================
+
+# ===== PlatformIO =====
 .pio/
-.vscode/
-.DS_Store
+.pioenvs/
+.piolibdeps/
 
-# Build artifacts
-*.tmp
-*.bak
-*.swp
-*~.nib
-local.properties
+# ===== Build Artifacts =====
+build/
+.build/
 
-# IDE
-.idea/
-*.iml
-*.ipr
-*.iws
+# ===== IDE Project Files =====
+.vscode/c_cpp_properties.json
+.vscode/launch.json
+.vscode/ipch/
+.vscode/.browse.c_cpp.db*
 
-# OS
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-$RECYCLE.BIN/
-
-# Credentials and secrets
+# ===== Configuration and Secrets =====
 credentials.h
 secrets.h
+src/secrets.h
 config_local.h
 wifi_credentials.h
+local.properties
 
+# ===== Project-specific =====
 # Web interface builds
 data/build/
 data/dist/
-
-# Claude Code settings
-.claude/
