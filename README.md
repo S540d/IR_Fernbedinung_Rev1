@@ -1,6 +1,7 @@
 # IR Remote Controller ESP32
 
 ESP32-based IR remote controller with web interface for programmable infrared control.
+Developed for use with an Sony NEX-5. Further IR profils should be easily adopted.
 
 ## Description
 
